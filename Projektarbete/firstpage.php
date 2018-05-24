@@ -29,13 +29,44 @@
   </div>
   <div class="middle">
     <div class="searchbardiv">
-      <form name=""action="">
+      <form name="search" action="" method ="post">
         <h2> Sök till en kurs eller ett program här </h2>
-        <input type="text" placeholder="Sök på en kurs..." id="searchbar">
-        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i> 
+        <input type="text" placeholder="Sök på en kurs..." id="searchbar" name="searchbar">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i>
         </button>
-      </div>
+        <?php
+        include 'connect.php';
+
+        if (isset($_POST['searchbar'])){
+
+          $search = $_POST['searchbar'];
+
+          $searchquery = $conn->query("SELECT namn, epost FROM kurs k
+          JOIN anv_kurs ak
+          ON k.kurskod = ak.kurskod
+          JOIN user u
+          ON ak.personnummer = u.personnummer
+          WHERE k.kursnamn = '$search' AND u.anvtyp = 'mentor';");
+          if ($searchquery->num_rows > 0)
+          {
+              while($row = $searchquery->fetch_assoc())
+              {
+                $namn = $row['namn'];
+                $epost = $row['epost'];
+                echo "<div> Epost: $epost <br/> $namn <br/></div>";
+              }
+          }
+          else
+            {
+              echo "Det finns inga mentorer!";
+            }
+        }
+         ?>
+
+
+
       </form>
+      </div>
     </div>
     <div class="footer">
     </div>
