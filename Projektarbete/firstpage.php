@@ -1,23 +1,25 @@
 <?php
-//startar en session.
-session_start();
-// Kolla om användaren är inloggad, och då får denna tillgång till index.php, säkerhetskoll
-if(!isset($_SESSION['loggedin']))
-{
- header('Location:index.php');
-}
+  session_start();
+  if(!isset($_SESSION['inlogged'])){
+    header("Location:Login.php");
+  }
+  else
+  {
+    $username = $_SESSION['username'];
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <title> Studentchatten </title>
     <link rel="stylesheet" href="css/main.css" type="text/css" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   </head>
   <body>
     <div class="header">
-      <h1> Pluggkollen </h1>
+      <h1> Pluggkollen <?php echo $username  ?></h1>
     <ul>
       <li><a class="active" href="firstpage.php">Hem</a></li>
       <li><a href="profil.php">Profil</a></li>
@@ -30,8 +32,7 @@ if(!isset($_SESSION['loggedin']))
       <form name=""action="">
         <h2> Sök till en kurs eller ett program här </h2>
         <input type="text" placeholder="Sök på en kurs..." id="searchbar">
-        <button type="submit"> Sök
-          <!-- <i class="fa fa-search" aria-hidden="true"></i> kod för sök ikon, men förstår ej hur det fungerar... https://fontawesome.com/v4.7.0/get-started/-->
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i> 
         </button>
       </div>
       </form>
