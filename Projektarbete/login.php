@@ -6,7 +6,7 @@
   </head>
   <body>
   <div class='login'>
-    <form name="login" method="POST" onsubmit="" action="firstpage.php">
+    <form name="login" method="POST" onsubmit="" action="loginprocess.php">
         <label for="username"> Personnummer eller e-postadress </label><br/>
         <input type="text" id="username" name="username"><br/>
         <label for="password"> Lösenord </label><br/>

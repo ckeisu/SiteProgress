@@ -1,3 +1,12 @@
+<?php
+//startar en session.
+session_start();
+// Kolla om användaren är inloggad, och då får denna tillgång till index.php, säkerhetskoll
+if(!isset($_SESSION['loggedin']))
+{
+ header('Location:index.php');
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,18 +16,27 @@
 
   </head>
   <body>
+    <div class="header">
+      <h1> Pluggkollen </h1>
     <ul>
       <li><a class="active" href="firstpage.php">Hem</a></li>
       <li><a href="profil.php">Profil</a></li>
       <li><a href="rewards.php">Belöningar</a></li>
+      <li><a href="mentorskap.php">Mentorskap</a></li>
     </ul>
+  </div>
+  <div class="middle">
     <div class="searchbardiv">
-      <form action="">
+      <form name=""action="">
+        <h2> Sök till en kurs eller ett program här </h2>
         <input type="text" placeholder="Sök på en kurs..." id="searchbar">
-        <button type="submit">
+        <button type="submit"> Sök
           <!-- <i class="fa fa-search" aria-hidden="true"></i> kod för sök ikon, men förstår ej hur det fungerar... https://fontawesome.com/v4.7.0/get-started/-->
         </button>
+      </div>
       </form>
+    </div>
+    <div class="footer">
     </div>
   </body>
 </html>
