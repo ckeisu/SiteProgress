@@ -41,30 +41,33 @@
 
           $search = $_POST['searchbar'];
 
-          $searchquery = $conn->query("SELECT namn, epost FROM kurs k
+          $searchquery = $conn->query("SELECT namn, universitet FROM kurs k
           JOIN anv_kurs ak
           ON k.kurskod = ak.kurskod
           JOIN user u
           ON ak.personnummer = u.personnummer
           WHERE k.kursnamn = '$search' AND u.anvtyp = 'mentor';");
+
           if ($searchquery->num_rows > 0)
           {
               while($row = $searchquery->fetch_assoc())
               {
                 $namn = $row['namn'];
-                $epost = $row['epost'];
-                echo "<div> Epost: $epost <br/> $namn <br/></div>";
+                $universitet = $row['universitet'];
+
+                echo "<div class = 'mentor'> $namn </br> Poäng: 5 </br> Universitet: $universitet </br>
+                <form name='mentorknappen' method='POST' action=''>
+                <input type='submit' value='Ta kontakt med $namn' id='mentorknappen'>
+                </form>
+                </div>";
               }
           }
           else
             {
-              echo "Det finns inga mentorer!";
+              echo "Inga mentorer hittades!";
             }
         }
          ?>
-
-
-
       </form>
       </div>
     </div>
