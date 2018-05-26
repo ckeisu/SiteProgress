@@ -126,6 +126,17 @@ li a:hover {
   margin-bottom: 10px;
   text-align: left;
   }
-#mentorknappen{
+.text{
+  padding: 5px;
+  margin: 0 auto;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  position: center;
+  width: 700px;
+}
 
+.r1
+{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }

@@ -66,6 +66,17 @@ else
         </div>";
       }
      ?>
+
+     <!-- <p> Önskar du att bli mentor? </p>
+     <form>
+       <div>
+         <input type="checkbox" id="blimentor" name="blimentor" value="bli mentor">
+         <label for="subscribeNews">Bli mentor</label>
+       </div>
+       <div>
+         <button type="submit">Bli mentor!</button>
+       </div>
+     </form> -->
     <!-- <div class="footer">
     </div> -->
   </body>
