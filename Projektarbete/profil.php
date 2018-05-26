@@ -35,7 +35,7 @@ else
       ON k.kurskod = ak.kurskod
       JOIN user u
       ON ak.personnummer = u.personnummer
-      WHERE namn = '$username' OR u.personnummer = '$username';");
+      WHERE epost = '$username' OR u.personnummer = '$username';");
 
           while($row = $profilquery->fetch_assoc())
           {
@@ -53,7 +53,7 @@ else
       ON k.kurskod = ak.kurskod
       JOIN user u
       ON ak.personnummer = u.personnummer
-      WHERE namn = '$username' OR u.personnummer = '$username';
+      WHERE epost = '$username' OR u.personnummer = '$username';
       ");
       echo '<h2> Slutförda kurser </h2>';
       while($row = $profilkursquery->fetch_assoc())

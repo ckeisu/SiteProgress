@@ -29,12 +29,14 @@
   </div>
   <div class="middle">
     <div class="searchbardiv">
-      <form name="search" action="" method ="post">
-        <h2> Sök till en kurs eller ett program här </h2>
-        <input type="text" placeholder="Sök på en kurs..." id="searchbar" name="searchbar">
+      <form name="search" method = "POST">
+        <h2> Söka på en kurs eller ett program för att hitta en mentor </h2>
+        <input type="text" placeholder="Sök på en kurs eller ett program..." id="searchbar" name="searchbar">
         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i>
         </button>
+      </form>
         <?php
+        //sök processen 
         include 'connect.php';
 
         if (isset($_POST['searchbar'])){
@@ -46,17 +48,18 @@
           ON k.kurskod = ak.kurskod
           JOIN user u
           ON ak.personnummer = u.personnummer
-          WHERE k.kursnamn = '$search' AND u.anvtyp = 'mentor';");
+          WHERE k.kursnamn = '$search' AND u.anvtyp = 'mentor' AND NOT (epost = '$username' OR u.personnummer = '$username');");
 
           if ($searchquery->num_rows > 0)
           {
+              echo "<p> Följande har läst $search: </p>";
               while($row = $searchquery->fetch_assoc())
               {
                 $namn = $row['namn'];
                 $universitet = $row['universitet'];
 
                 echo "<div class = 'mentor'> $namn </br> Poäng: 5 </br> Universitet: $universitet </br>
-                <form name='mentorknappen' method='POST' action=''>
+                <form name='mentorknappen' action='meddelande.php' method='POST'>
                 <input type='submit' value='Ta kontakt med $namn' id='mentorknappen'>
                 </form>
                 </div>";
@@ -64,11 +67,10 @@
           }
           else
             {
-              echo "Inga mentorer hittades!";
+              echo " </br> Inga mentorer hittades!";
             }
         }
          ?>
-      </form>
       </div>
     </div>
     <div class="footer">
