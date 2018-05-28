@@ -175,7 +175,7 @@ li a:hover {
   width: 60px;
   height: 60px;
   background: #ccc;
-  border-radius: 50%;
+  border-radius: 10px;
 }
 
 .chat .chat-message{
