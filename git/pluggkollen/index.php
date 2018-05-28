@@ -3,6 +3,7 @@
   <head>
     <title> Studentchatten </title>
     <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <script src="js/scripts.js"></script>
   </head>
   <body>
     <div class="header">

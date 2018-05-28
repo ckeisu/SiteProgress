@@ -3,6 +3,7 @@
   <head>
     <title> Studentchatten </title>
     <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <script src="js/scripts.js"></script>
   </head>
   <body>
   <div class='login'>
@@ -13,7 +14,7 @@
         <input type="password" id="password" name="password"><br/><br/>
         <input type="submit" value="Logga in" id="skicka">
     </form>
-    <form name="registrationbutton" action="registrering.php">
+    <form name="registrationbutton" onsubmit="return buttonPopup()" action="">
         <input type="submit" value="Registrera dig!" id="registrationbutton">
     </form>
   </div>
